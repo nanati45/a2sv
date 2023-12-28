@@ -2,10 +2,9 @@ class Solution:
     def arrayChange(self, nums: List[int], operations: List[List[int]]) -> List[int]:
         d = {n: i for i, n in enumerate(nums)}
         print(d)
-        for i in operations:
-            num, repl = i
+        for [num, op] in operations:
             index = d[num]
-            nums[index] = repl
-            d[repl] = index
+            nums[index] = op
+            d[op] = index
             del d[num]   
         return nums
