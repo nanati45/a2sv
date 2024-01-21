@@ -1,11 +1,23 @@
 class Solution:
     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
-        pri={0:1}
-        res=0
-        summ=0
-        for i in nums:
-            summ+=i
-            res+=pri.get(summ-goal,0)
-            pri[summ]=pri.get(summ,0)+1
-            
-        return res
+
+        count = 0
+        sums = {}  # A dictionary to store the frequency of each sum
+
+        curr_sum = 0
+        for num in nums:
+            curr_sum += num
+
+            if curr_sum == goal:
+                count += 1
+
+            if curr_sum - goal in sums:
+                count += sums[curr_sum - goal]
+
+            if curr_sum in sums:
+                sums[curr_sum] += 1
+            else:
+                sums[curr_sum] = 1
+
+        return count  
+
