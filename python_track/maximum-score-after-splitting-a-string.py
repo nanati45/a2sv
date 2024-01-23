@@ -12,6 +12,5 @@ class Solution:
             Sum = right + left
             mx = max(mx, Sum)
             l +=1
-            print(left , right)
         return mx     
             
